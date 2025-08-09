@@ -1,0 +1,49 @@
+/* 1. Warna Background Utama */
+body {
+  background-color: #ffb200;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* 2. Warna dan Style untuk Kartu Produk Utama */
+.main-content {
+  background-color: #01153e;
+  color: white;
+}
+
+/* Customisasi Judul H2 */
+.header h2 {
+  background-color: white;
+  color: #01153e;
+}
+
+/* Posisi relatif untuk menempatkan tag harga */
+.product-image-wrapper {
+  position: relative;
+}
+
+/* Style untuk tag harga di atas gambar */
+.price-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(1, 21, 62, 0.8);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 50rem; /* rounded-pill */
+  font-weight: bold;
+  font-size: 1.1em;
+  border: 2px solid white;
+}
+
+/* 3. Warna Tombol Kustom */
+.btn-custom {
+  background-color: #ffba1a;
+  color: #01153e;
+  font-weight: bold;
+}
+
+.btn-custom:hover {
+  background-color: #e0a417; /* Warna hover sedikit lebih gelap */
+  color: #01153e;
+}
