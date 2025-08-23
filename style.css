@@ -1,66 +1,321 @@
-/* 1. Warna Background Utama */
 body {
   background-color: #ffb200;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  font-family: sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
-/* 2. Warna dan Style untuk Kontainer Utama */
 .main-content {
   background-color: #01153e;
   color: white;
-  /* DIKECILIN LAGI: Lebar maksimum sekarang hanya 720px */
-  max-width: 720px;
-  margin: 0 auto; /* Otomatis tengahkan kontainer */
 }
 
-/* Customisasi Judul */
 .header h1 {
-  /* DIKECILIN LAGI: Ukuran font judul utama */
-  font-size: 1.8rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #ffb200;
+  text-underline-offset: 8px;
 }
 
 .header h2 {
   background-color: white;
   color: #01153e;
-  /* DIKECILIN LAGI: Font sub-judul */
-  font-size: 0.9rem;
+  font-weight: bold;
 }
 
-/* Wrapper untuk setiap kartu produk */
+/* KOTAK KUNING PEMBUNGKUS PRODUK */
+.product-section {
+  background-color: #ffb200;
+  border-radius: 0.5rem; /* Sudut tumpul */
+  padding: 1.5rem; /* Jarak antara produk dan tepi kotak kuning */
+}
+
+/* Kartu produk dibuat transparan agar warna latar belakangnya
+   adalah warna dari .product-section (kuning) */
 .product-card {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+}
+
+.product-image-wrapper {
+  position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
-  background-color: #01153e;
+  cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+.product-image-wrapper:hover {
+  transform: scale(1.05);
 }
 
 .product-image-wrapper img {
-  width: 100px;
-  height: 100px;
   display: block;
+  width: 100%;
 }
 
-/* 3. Warna dan Style Tombol Kustom */
-.btn-custom {
-  background-color: #01153e;
+.product-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(1, 21, 62, 0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.product-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.product-price {
+  margin-top: 0.75rem;
+  background-color: #ffffff;
+  color: #01153e;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.btn-get-now {
+  background-color: #000000;
   color: white;
   border: none;
-  border-radius: 0;
-  padding: 0.5rem;
+  border-radius: 0.25rem;
+  padding: 0.6rem;
   font-weight: bold;
   text-transform: uppercase;
-  /* DIKECILIN LAGI: Ukuran font tombol */
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.btn-custom:hover {
+.btn-get-now:hover {
   color: white;
-  background-color: #032262;
+  background-color: #333333;
+}
+
+/* ================================== */
+/* STYLING UNTUK SECTION PACKAGE BARU */
+/* ================================== */
+
+.package-section {
+  background-color: #ffb200; /* Warna kuning dari .product-section */
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Jarak antar item package */
+}
+
+.package-item {
+  width: 100%;
+}
+
+.package-box {
+  background-color: #01153e; /* Warna biru tua dari .main-content */
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%; /* Membuat setiap box sama tinggi */
+}
+
+.package-box.text {
+  align-items: flex-start; /* Konten text rata kiri */
+  text-align: left;
+}
+
+.package-box.visuals {
+  gap: 1rem;
+}
+
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.package-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.package-price {
+  background-color: #01153e;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  white-space: nowrap; /* Mencegah harga turun baris */
+}
+
+.included-items {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  width: 100%;
+}
+
+.included-items .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.included-items .item img {
+  max-width: 60px; /* Atur ukuran gambar item */
+  height: auto;
+  background-color: #ffffff; /* Beri background putih agar terlihat */
+  border-radius: 0.25rem;
+  padding: 4px;
+}
+
+.included-items .item span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.package-box p {
+  margin-bottom: 1.5rem;
+}
+
+.btn-get-now-package {
+  background-color: #ffb200; /* Warna kuning */
+  color: #01153e; /* Warna biru tua */
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.6rem 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-get-now-package:hover {
+  background-color: #fdd45c; /* Warna kuning lebih cerah saat hover */
+  color: #01153e;
+}
+
+/* ================================== */
+/* STYLING UNTUK HOW TO ORDER */
+/* ================================== */
+
+.how-to-order-section {
+  background-color: #ffb200; /* Warna kuning */
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: #01153e; /* Warna teks biru tua */
+}
+
+.order-steps {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: order-counter; /* Membuat counter kustom */
+}
+
+.order-steps li {
+  position: relative;
+  padding-left: 60px; /* Ruang untuk nomor */
+  margin-bottom: 1.5rem;
+}
+
+.order-steps li:last-child {
+  margin-bottom: 0;
+}
+
+/* Membuat lingkaran nomor kustom */
+.order-steps li::before {
+  counter-increment: order-counter;
+  content: counter(order-counter);
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 40px;
+  height: 40px;
+  background-color: #01153e; /* Lingkaran biru tua */
+  color: white; /* Angka putih */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.order-steps li h3 {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ================================== */
+/* STYLING UNTUK FAQ (ACCORDION) */
+/* ================================== */
+
+.faq-section {
+  background-color: #ffb200; /* Warna kuning */
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+/* Mengganti style default Bootstrap Accordion */
+.accordion-item {
+  border: none;
+  border-radius: 0.5rem !important; /* !important untuk override Bootstrap */
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-header {
+  border-radius: 0.5rem;
+}
+
+.accordion-button {
+  background-color: #01153e; /* Latar tombol biru tua */
+  color: white; /* Teks pertanyaan putih */
+  font-weight: bold;
+  border-radius: 0.5rem;
+  box-shadow: none !important; /* Menghapus shadow */
+}
+
+/* Style saat accordion terbuka */
+.accordion-button:not(.collapsed) {
+  background-color: #0d2863; /* Warna biru sedikit lebih terang */
+  color: white;
+}
+
+/* Mengubah ikon panah menjadi putih */
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 178, 0, 0.5); /* Shadow kuning saat fokus */
+}
+
+.accordion-body {
+  background-color: #f8f9fa;
+  color: #212529;
 }
