@@ -1,6 +1,6 @@
 body {
   background-color: #ffb200;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .main-content {
@@ -8,20 +8,55 @@ body {
   color: white;
 }
 
-.header h1 {
-  font-size: 2.2rem;
-  font-weight: bold;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-decoration-color: #ffb200;
-  text-underline-offset: 8px;
+/*Styling title*/
+
+.title-merch {
+  position: relative;
+
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #01153E;    
+  word-spacing: 5px;
 }
 
-.header h2 {
-  background-color: white;
-  color: #01153e;
-  font-weight: bold;
+.title-merch::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;             /* ikut lebar teks */
+  text-align: center;      /* ikut center */
+  -webkit-text-stroke: 15px #FFDD95;
+  color: transparent;
+  z-index: -1;
 }
+/*End styling title*/
+
+/*Styling header h2*/
+.stroke-text {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff; /* isi putih */
+  z-index: 1;
+}
+
+.stroke-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-text-stroke: 6px #FFB200; /* outline kuning tunggal */
+  color: transparent; /* biar hanya border */
+}
+
+.stroke-text span {
+  position: relative;
+  z-index: 2;
+}
+/*End styling h2*/
 
 /* KOTAK KUNING PEMBUNGKUS PRODUK */
 .product-section {
