@@ -58,22 +58,17 @@ body {
 }
 /*End styling h2*/
 
-/* KOTAK KUNING PEMBUNGKUS PRODUK */
+/* product section (single product) */
 .product-section {
   background-color: #ffb200;
   border-radius: 0.5rem; /* Sudut tumpul */
   padding: 1.5rem; /* Jarak antara produk dan tepi kotak kuning */
 }
 
-/* Kartu produk dibuat transparan agar warna latar belakangnya
-   adalah warna dari .product-section (kuning) */
-.product-card {
-  background-color: transparent;
-  border: none;
-  text-align: center;
-}
+
 
 .product-image-wrapper {
+  margin-top: 15px;
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -81,62 +76,29 @@ body {
   transition: transform 0.2s ease-in-out;
 }
 
-.product-image-wrapper:hover {
-  transform: scale(1.05);
-}
 
 .product-image-wrapper img {
   display: block;
   width: 100%;
 }
 
-.product-info {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(1, 21, 62, 0.65);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
-.product-name {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #ffffff;
-}
-
-.product-price {
-  margin-top: 0.75rem;
-  background-color: #ffffff;
-  color: #01153e;
-  padding: 0.3rem 1rem;
-  border-radius: 1rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
 
 .btn-get-now {
-  background-color: #000000;
-  color: white;
-  border: none;
-  border-radius: 0.25rem;
+  background-color: #01153E;
+  color: #FFDD95;
+  border: 2px solid #01153E;
+  border-radius: 15px;
   padding: 0.6rem;
   font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   width: 100%;
-  margin-top: 1rem;
-  transition: background-color 0.2s ease-in-out;
 }
 
 .btn-get-now:hover {
-  color: white;
-  background-color: #333333;
+  color: #01153E;
+  border: 2px solid #01153E;
+  border-radius: 15px;
+  background-color: #FFB200;
 }
 
 /* ================================== */
