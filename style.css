@@ -1,22 +1,65 @@
+/* ================================== */
+/* CUSTOM PROPERTIES (CSS VARIABLES)  */
+/* ================================== */
+:root {
+  --primary-blue: #01153e;
+  --primary-orange: #fd8824;
+  --primary-yellow: #ffb200;
+  --light-yellow: #ffdd95;
+  --lightest-yellow: #fff7e9;
+  --white: #ffffff;
+}
+
+/* ================================== */
+/* GLOBAL STYLES                      */
+/* ================================== */
 body {
-  background: linear-gradient(to bottom, #FFB200, #FD8824);
+  background: linear-gradient(to bottom, var(--primary-yellow), var(--primary-orange));
   font-family: 'Inter', sans-serif;
 }
 
 .main-content {
-  background-color: #01153e;
-  color: white;
+  background-color: var(--primary-blue);
+  color: var(--white);
 }
 
-/*Styling title*/
+p {
+  font-weight: 400; /* Paragraphs were bold, now normal */
+  line-height: 1.6;
+}
 
+/* ================================== */
+/* REUSABLE STROKE TEXT EFFECT        */
+/* ================================== */
+.stroke-text-effect {
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  color: var(--white);
+  z-index: 1;
+}
+
+.stroke-text-effect::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+  color: transparent;
+}
+
+/* ================================== */
+/* TYPOGRAPHY & HEADINGS              */
+/* ================================== */
 .title-merch {
   position: relative;
-
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #01153E;    
-  word-spacing: 5px;
+  font-weight: 500;
+  color: var(--primary-blue);
+  word-spacing: 2px;
+  /* Fluid font size: min 2rem, scales, max 4rem */
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
 }
 
 .title-merch::before {
@@ -24,94 +67,78 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;             /* ikut lebar teks */
-  text-align: center;      /* ikut center */
-  -webkit-text-stroke: 15px #FFDD95;
+  width: 100%;
+  text-align: center;
+  -webkit-text-stroke: 15px var(--light-yellow);
   color: transparent;
   z-index: -1;
 }
-/*End styling title*/
 
-/*Styling header h2*/
-.stroke-text {
-  position: relative;
-  display: inline-block;
-  font-size: 2rem;
-  font-weight: 800;
-  color: #fff; /* isi putih */
-  z-index: 1;
+h2.stroke-text-effect {
+  font-size: clamp(1.8rem, 4vw + 1rem, 2.5rem);
 }
 
-.stroke-text::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  -webkit-text-stroke: 6px #FFB200; /* outline kuning tunggal */
-  color: transparent; /* biar hanya border */
+h2.stroke-text-effect::before {
+  -webkit-text-stroke: 6px var(--primary-yellow);
 }
 
-.stroke-text span {
-  position: relative;
-  z-index: 2;
+/* For FAQ title */
+.faq-title {
+  color: var(--primary-blue);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5vw + 1rem, 3.5rem);
 }
-/*End styling h2*/
 
-/* product section (single product) */
+.faq-title::before {
+  -webkit-text-stroke: 10px var(--lightest-yellow);
+}
+
+/* ================================== */
+/* SINGLE PRODUCT SECTION             */
+/* ================================== */
 .product-section {
-  background-color: #ffb200;
-  border-radius: 0.5rem; /* Sudut tumpul */
-  padding: 1.5rem; /* Jarak antara produk dan tepi kotak kuning */
+  background-color: var(--primary-yellow);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
 }
-
-
 
 .product-image-wrapper {
-  margin-top: 15px;
-  position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
-  cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-
-
-.product-image-wrapper img {
-  display: block;
-  width: 100%;
+.product-image-wrapper:hover {
+    transform: scale(1.03);
 }
 
-
 .btn-get-now {
-  background-color: #01153E;
-  color: #FFDD95;
-  border: 2px solid #01153E;
+  background-color: var(--primary-blue);
+  color: var(--light-yellow);
+  border: 2px solid var(--primary-blue);
   border-radius: 15px;
   padding: 0.6rem;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   width: 100%;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-get-now:hover {
-  color: #01153E;
-  border: 2px solid #01153E;
-  border-radius: 15px;
-  background-color: #FFB200;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  background-color: var(--primary-yellow);
 }
-/*end styling single product*/
 
 /* ================================== */
-/* STYLING UNTUK SECTION PACKAGE BARU */
+/* PACKAGE SECTION                    */
 /* ================================== */
 .package-section {
-  background-color: #ffb200; /* Warna kuning dari .product-section */
+  background-color: var(--primary-yellow);
   border-radius: 0.5rem;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Jarak antar item package */
+  gap: 1.5rem;
 }
 
 .package-item {
@@ -119,14 +146,14 @@ body {
 }
 
 .package-box {
-  background-color: #01153e; /* Warna biru tua */
+  background-color: var(--primary-blue);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  color: white;
+  color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%; /* Membuat setiap box sama tinggi */
+  height: 100%;
 }
 
 .package-box.text {
@@ -135,62 +162,15 @@ body {
 }
 
 .package-box.visuals {
-  background: none; /* 1. Menghilangkan background */
-  padding: 0; /* Menghilangkan padding agar gambar tidak terdorong */
-  align-items: center; /* Menengahkan gambar */
+  background: none;
+  padding: 0;
+  align-items: center;
 }
 
 .package-box.visuals img {
   max-width: 100%;
   height: auto;
-  object-fit: contain; /* Memastikan gambar tidak gepeng */
-}
-
-.package-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.package-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  line-height: 1.2;
-}
-
-.package-price {
-  background-color: #01153e;
-  border: 2px solid white;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  white-space: nowrap; /* Mencegah harga turun baris */
-}
-
-.included-items {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: flex-end;
-  text-align: center;
-  width: 100%;
-}
-
-
-
-.included-items .item img {
-  max-width: 60px; /* Atur ukuran gambar item */
-  height: auto;
-  background-color: #ffffff; /* Beri background putih agar terlihat */
-  border-radius: 0.25rem;
-  padding: 4px;
-}
-
-.included-items .item span {
-  font-size: 0.8rem;
-  font-weight: 500;
+  object-fit: contain;
 }
 
 .package-box p {
@@ -198,42 +178,41 @@ body {
 }
 
 .btn-get-now-package {
-  background-color: #ffb200;
-  color: white;
-  border: none;
+  background-color: var(--primary-yellow);
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
   border-radius: 10px;
   font-weight: bold;
-   padding: 0.4rem 22px; 
+  padding: 0.4rem 22px;
   font-size: 1.1rem;
   text-decoration: none;
-  align-self: center;
-  border: 2px solid #200;
+  align-self: center; /* Use center for mobile stacking */
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-get-now-package:hover {
-  background-color: #01153e; /* Warna kuning lebih cerah saat hover */
-  border: 2px solid #ffb200;
+  background-color: var(--primary-blue);
+  color: var(--primary-yellow);
+  border: 2px solid var(--primary-yellow);
 }
 
 /* ================================== */
-/* STYLING UNTUK HOW TO ORDER */
+/* HOW TO ORDER SECTION               */
 /* ================================== */
-
 .how-to-order-section {
   border-radius: 0.5rem;
-  padding: 2rem;
-  color: white; /* Warna teks biru tua */
+  padding: clamp(1rem, 5vw, 2rem); /* Fluid padding */
 }
 
 .order-steps {
   list-style: none;
   padding-left: 0;
-  counter-reset: order-counter; /* Membuat counter kustom */
+  counter-reset: order-counter;
 }
 
 .order-steps li {
   position: relative;
-  padding-left: 60px; /* Ruang untuk nomor */
+  padding-left: 50px;
   margin-bottom: 1.5rem;
 }
 
@@ -241,23 +220,22 @@ body {
   margin-bottom: 0;
 }
 
-/* Membuat lingkaran nomor kustom */
 .order-steps li::before {
   counter-increment: order-counter;
   content: counter(order-counter);
   position: absolute;
   left: 0;
   top: -5px;
-  width: 40px;
-  height: 40px;
-  background-color: #01153e; /* Lingkaran biru tua */
-  color: white; /* Angka putih */
+  width: 35px;
+  height: 35px;
+  background-color: var(--primary-yellow);
+  color: var(--primary-blue);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .order-steps li h3 {
@@ -267,82 +245,89 @@ body {
 }
 
 /* ================================== */
-/* STYLING BARU UNTUK FAQ (ACCORDION) */
+/* FAQ SECTION (ACCORDION)            */
 /* ================================== */
-
-
-/* Mengatur ulang Accordion Bootstrap */
 .accordion {
-  /* Menghilangkan background & border default Bootstrap */
   --bs-accordion-bg: transparent;
   --bs-accordion-border-color: transparent;
 }
 
 .accordion-item {
-  background: none; /* Item individual transparan */
+  background: none;
   border: none;
-  margin-bottom: 0.75rem; /* Jarak antar pertanyaan */
-  overflow: hidden; /* Penting untuk radius sudut */
+  margin-bottom: 2px;
+  overflow: hidden;
   border-radius: 0.5rem;
 }
-.accordion-item:last-child {
-  margin-bottom: 0;
-}
 
-/* Tombol Pertanyaan */
 .accordion-button {
-  background-color: #01153E; /* Warna biru lebih terang dari latar */
-  color: white;
+  background-color: var(--primary-blue);
+  color: var(--white);
   font-weight: 600;
   box-shadow: none !important;
 }
 
-/* Saat tombol pertanyaan DIBUKA */
 .accordion-button:not(.collapsed) {
-  background-color: #01153E;
-  color: white;
-  /* Menghilangkan sudut bawah agar menyatu dengan jawaban */
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  background-color: var(--primary-blue);
+  color: var(--white);
 }
 
-/* Saat tombol pertanyaan DITUTUP */
 .accordion-button.collapsed {
-  border-radius: 0.5rem; /* Semua sudut membulat saat tertutup */
+  border-radius: 0.5rem;
 }
 
-/* Ikon panah (chevron) */
 .accordion-button::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
-/* Konten Jawaban */
 .accordion-body {
-  background-color: #FFDD95; /* Latar kuning sesuai gambar */
-  color: #01153e; /* Teks warna biru tua */
+  background-color: var(--light-yellow);
+  color: var(--primary-blue);
   font-weight: 500;
 }
 
-/* Efek focus saat tombol dipilih (opsional, tapi bagus untuk aksesibilitas) */
 .accordion-button:focus {
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.4) !important;
 }
-/* Styling untuk judul FAQ dengan efek outline */
-.faq-title {
-  position: relative;
-  display: inline-block;
-  font-size: 3rem;
-  font-weight: 900; /* Dibuat lebih tebal */
-  color: #01153e; /* WARNA ISI: Diubah menjadi biru tua */
-  z-index: 1;
+
+
+/* ================================== */
+/* RESPONSIVE ADJUSTMENTS (MEDIA QUERIES) */
+/* ================================== */
+@media (max-width: 768px) {
+  .title-merch::before {
+    -webkit-text-stroke-width: 10px; /* Thinner stroke on mobile */
+  }
+
+  .package-box.text {
+    text-align: center; /* Center text on mobile */
+  }
+
+  .btn-get-now-package {
+     align-self: center;
+  }
 }
 
-.faq-title::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  -webkit-text-stroke: 10px #FFF7E9; 
-  color: transparent;
+@media (max-width: 576px) {
+  .product-section, .package-section {
+    padding: 1rem; /* Less padding on small screens */
+  }
+
+  .order-steps li {
+    padding-left: 45px;
+  }
+
+  .order-steps li::before {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .title-merch::before {
+    -webkit-text-stroke-width: 8px; /* Even thinner stroke */
+  }
+
+  h2.stroke-text-effect::before {
+     -webkit-text-stroke-width: 4px;
+  }
 }
