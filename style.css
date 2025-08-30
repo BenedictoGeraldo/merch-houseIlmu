@@ -220,10 +220,9 @@ body {
 /* ================================== */
 
 .how-to-order-section {
-  background-color: #ffb200; /* Warna kuning */
   border-radius: 0.5rem;
   padding: 2rem;
-  color: #01153e; /* Warna teks biru tua */
+  color: white; /* Warna teks biru tua */
 }
 
 .order-steps {
@@ -272,7 +271,6 @@ body {
 /* ================================== */
 
 .faq-section {
-  background-color: #ffb200; /* Warna kuning */
   border-radius: 0.5rem;
   padding: 1rem;
 }
