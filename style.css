@@ -1,5 +1,5 @@
 body {
-  background-color: #ffb200;
+  background: linear-gradient(to bottom, #FFB200, #FD8824);
   font-family: 'Inter', sans-serif;
 }
 
@@ -267,53 +267,82 @@ body {
 }
 
 /* ================================== */
-/* STYLING UNTUK FAQ (ACCORDION) */
+/* STYLING BARU UNTUK FAQ (ACCORDION) */
 /* ================================== */
 
-.faq-section {
-  border-radius: 0.5rem;
-  padding: 1rem;
+
+/* Mengatur ulang Accordion Bootstrap */
+.accordion {
+  /* Menghilangkan background & border default Bootstrap */
+  --bs-accordion-bg: transparent;
+  --bs-accordion-border-color: transparent;
 }
 
-/* Mengganti style default Bootstrap Accordion */
 .accordion-item {
+  background: none; /* Item individual transparan */
   border: none;
-  border-radius: 0.5rem !important; /* !important untuk override Bootstrap */
-  overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Jarak antar pertanyaan */
+  overflow: hidden; /* Penting untuk radius sudut */
+  border-radius: 0.5rem;
 }
 .accordion-item:last-child {
   margin-bottom: 0;
 }
 
-.accordion-header {
-  border-radius: 0.5rem;
-}
-
+/* Tombol Pertanyaan */
 .accordion-button {
-  background-color: #01153e; /* Latar tombol biru tua */
-  color: white; /* Teks pertanyaan putih */
-  font-weight: bold;
-  border-radius: 0.5rem;
-  box-shadow: none !important; /* Menghapus shadow */
-}
-
-/* Style saat accordion terbuka */
-.accordion-button:not(.collapsed) {
-  background-color: #0d2863; /* Warna biru sedikit lebih terang */
+  background-color: #01153E; /* Warna biru lebih terang dari latar */
   color: white;
+  font-weight: 600;
+  box-shadow: none !important;
 }
 
-/* Mengubah ikon panah menjadi putih */
+/* Saat tombol pertanyaan DIBUKA */
+.accordion-button:not(.collapsed) {
+  background-color: #01153E;
+  color: white;
+  /* Menghilangkan sudut bawah agar menyatu dengan jawaban */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Saat tombol pertanyaan DITUTUP */
+.accordion-button.collapsed {
+  border-radius: 0.5rem; /* Semua sudut membulat saat tertutup */
+}
+
+/* Ikon panah (chevron) */
 .accordion-button::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
 
-.accordion-button:focus {
-  box-shadow: 0 0 0 0.25rem rgba(255, 178, 0, 0.5); /* Shadow kuning saat fokus */
+/* Konten Jawaban */
+.accordion-body {
+  background-color: #FFDD95; /* Latar kuning sesuai gambar */
+  color: #01153e; /* Teks warna biru tua */
+  font-weight: 500;
 }
 
-.accordion-body {
-  background-color: #f8f9fa;
-  color: #212529;
+/* Efek focus saat tombol dipilih (opsional, tapi bagus untuk aksesibilitas) */
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.4) !important;
+}
+/* Styling untuk judul FAQ dengan efek outline */
+.faq-title {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 900; /* Dibuat lebih tebal */
+  color: #01153e; /* WARNA ISI: Diubah menjadi biru tua */
+  z-index: 1;
+}
+
+.faq-title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-text-stroke: 10px #FFF7E9; 
+  color: transparent;
 }
